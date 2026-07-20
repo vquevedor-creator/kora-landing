@@ -89,12 +89,12 @@ section{padding:5.5rem 0}
 .section-head p{color:var(--gris);font-size:.92rem;margin-top:.8rem}
 
 /* ---------- Products ---------- */
-.grid-products{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem}
+.grid-products{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
 .card{position:relative;text-align:center;cursor:pointer}
 .card-media{background:var(--crema);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:background .4s}
 .card:hover .card-media{background:#EFEBE1}
-.card-media svg{transition:transform .5s ease;height:68%;width:auto}
-.card:hover .card-media svg{transform:translateY(-8px) scale(1.03)}
+.card-media img{width:88%;height:88%;object-fit:contain;mix-blend-mode:multiply;transition:transform .5s ease}
+.card:hover .card-media img{transform:translateY(-6px) scale(1.04)}
 .badge{position:absolute;top:14px;left:14px;background:var(--malva);color:#fff;font-size:.62rem;letter-spacing:.12em;padding:.25rem .6rem;font-weight:500}
 .badge.new{background:var(--verde)}
 .card-actions{position:absolute;left:50%;transform:translateX(-50%) translateY(12px);bottom:16px;opacity:0;transition:all .35s ease;width:82%}
@@ -329,71 +329,70 @@ footer a:hover{color:#fff}
       <div class="card">
         <div class="card-media">
           <span class="badge new">Nuevo</span>
-          <svg width="120" height="230" viewBox="0 0 120 230">
-            <rect x="48" y="6" width="24" height="20" rx="3" fill="#2F5645"/>
-            <rect x="53" y="26" width="14" height="34" rx="5" fill="#D8D3C8"/>
-            <rect x="25" y="60" width="70" height="164" rx="12" fill="#F4F1EB" stroke="#E2DCD0"/>
-            <text x="60" y="130" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="16" letter-spacing="3" fill="#2F5645" font-weight="600">KORA</text>
-            <text x="60" y="148" text-anchor="middle" font-family="Jost,sans-serif" font-size="5.5" letter-spacing="1.5" fill="#7A4A47">SÉRUM GINSENG</text>
-          </svg>
+          <img src="images/anua-toner.jpg" alt="Anua Azelaic Acid 3 Cica Skin Clarifying Toner" loading="lazy">
           <div class="card-actions"><button>Añadir al carrito</button></div>
         </div>
-        <h3>Sérum de Ginseng</h3>
-        <div class="cat">Tratamiento</div>
+        <h3>Anua Azelaic 3 Cica Toner</h3>
+        <div class="cat">Tónico clarificante</div>
         <div class="stars">★★★★★</div>
-        <div class="price"><b>$34.00</b></div>
+        <div class="price"><b>$24.00</b></div>
       </div>
 
       <div class="card">
         <div class="card-media">
-          <span class="badge">-15%</span>
-          <svg width="120" height="230" viewBox="0 0 120 230">
-            <ellipse cx="60" cy="222" rx="42" ry="5" fill="#000" opacity=".05"/>
-            <rect x="22" y="118" width="76" height="100" rx="14" fill="#2F5645"/>
-            <rect x="20" y="98" width="80" height="24" rx="6" fill="#243F33"/>
-            <text x="60" y="160" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" letter-spacing="3" fill="#F4F1EB" font-weight="600">KORA</text>
-            <text x="60" y="176" text-anchor="middle" font-family="Jost,sans-serif" font-size="5.5" letter-spacing="1.5" fill="#C9AC90">CREMA DE ARROZ</text>
-          </svg>
+          <span class="badge">-10%</span>
+          <img src="images/medicube-serum.jpg" alt="Medicube PDRN Pink Peptide Serum" loading="lazy">
           <div class="card-actions"><button>Añadir al carrito</button></div>
         </div>
-        <h3>Crema de Arroz</h3>
+        <h3>Medicube PDRN Pink Serum</h3>
+        <div class="cat">Sérum / Tratamiento</div>
+        <div class="stars">★★★★★</div>
+        <div class="price"><s>$38.00</s><b>$34.00</b></div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <img src="images/medicube-cream.jpg" alt="Medicube PDRN Pink Collagen Capsule Cream" loading="lazy">
+          <div class="card-actions"><button>Añadir al carrito</button></div>
+        </div>
+        <h3>Medicube PDRN Collagen Cream</h3>
         <div class="cat">Hidratante</div>
         <div class="stars">★★★★★</div>
-        <div class="price"><s>$32.00</s><b>$27.00</b></div>
+        <div class="price"><b>$40.00</b></div>
       </div>
 
       <div class="card">
         <div class="card-media">
-          <svg width="120" height="230" viewBox="0 0 120 230">
-            <rect x="50" y="10" width="20" height="30" rx="3" fill="#2F5645"/>
-            <path d="M70 18 L92 18 L92 24 L70 24 Z" fill="#2F5645"/>
-            <rect x="30" y="40" width="60" height="184" rx="10" fill="#EFEAE0" stroke="#E2DCD0"/>
-            <text x="60" y="125" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" letter-spacing="3" fill="#2F5645" font-weight="600">KORA</text>
-            <text x="60" y="142" text-anchor="middle" font-family="Jost,sans-serif" font-size="5.2" letter-spacing="1.4" fill="#7A4A47">LIMPIADOR TÉ VERDE</text>
-          </svg>
+          <img src="images/biodance-pads.jpg" alt="Biodance Collagen Gel Toner Pads" loading="lazy">
           <div class="card-actions"><button>Añadir al carrito</button></div>
         </div>
-        <h3>Limpiador de Té Verde</h3>
-        <div class="cat">Limpieza</div>
-        <div class="stars">★★★★☆</div>
-        <div class="price"><b>$22.00</b></div>
-      </div>
-
-      <div class="card">
-        <div class="card-media">
-          <span class="badge">-7%</span>
-          <svg width="120" height="230" viewBox="0 0 120 230">
-            <path d="M42 30 Q42 16 60 16 Q78 16 78 30 L78 44 L42 44 Z" fill="#2F5645"/>
-            <path d="M36 44 L84 44 L92 210 Q92 224 60 224 Q28 224 28 210 Z" fill="#F4F1EB" stroke="#E2DCD0"/>
-            <text x="60" y="130" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" letter-spacing="3" fill="#2F5645" font-weight="600">KORA</text>
-            <text x="60" y="147" text-anchor="middle" font-family="Jost,sans-serif" font-size="5.2" letter-spacing="1.4" fill="#7A4A47">PROTECTOR SPF 50+</text>
-          </svg>
-          <div class="card-actions"><button>Añadir al carrito</button></div>
-        </div>
-        <h3>Protector Solar SPF 50+</h3>
-        <div class="cat">Protección</div>
+        <h3>Biodance Collagen Toner Pads</h3>
+        <div class="cat">Discos de tónico</div>
         <div class="stars">★★★★★</div>
-        <div class="price"><s>$28.00</s><b>$26.00</b></div>
+        <div class="price"><b>$28.00</b></div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <img src="images/ordinary-ha.jpg" alt="The Ordinary Hyaluronic Acid 2% + B5" loading="lazy">
+          <div class="card-actions"><button>Añadir al carrito</button></div>
+        </div>
+        <h3>The Ordinary Hyaluronic Acid 2%</h3>
+        <div class="cat">Hidratación</div>
+        <div class="stars">★★★★☆</div>
+        <div class="price"><b>$14.00</b></div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span class="badge">Set</span>
+          <img src="images/ordinary-set.png" alt="The Ordinary The Daily Set" loading="lazy">
+          <div class="card-actions"><button>Añadir al carrito</button></div>
+        </div>
+        <h3>The Ordinary Daily Set</h3>
+        <div class="cat">Rutina 3 pasos</div>
+        <div class="stars">★★★★★</div>
+        <div class="price"><s>$45.00</s><b>$39.00</b></div>
       </div>
 
     </div>
