@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KORA — Original K Beauty | Skincare Coreano</title>
+<meta name="description" content="KORA — Original K Beauty. Cosmética coreana auténtica: esencias, sérums y cremas con ingredientes naturales para una piel radiante.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verde:#2F5645;
+  --verde-oscuro:#24443646;
+  --verde-deep:#1F3A2E;
+  --malva:#7A4A47;
+  --crema:#F7F5F1;
+  --blanco:#FFFFFF;
+  --gris:#8A8A85;
+  --negro:#22261F;
+  --linea:#E4E0D8;
+  --serif:'Cormorant Garamond', Georgia, serif;
+  --sans:'Jost', 'Helvetica Neue', Arial, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--negro);background:var(--blanco);line-height:1.6;font-weight:300}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.container{width:min(1200px,92%);margin:0 auto}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15}
+.eyebrow{font-family:var(--sans);font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;color:var(--malva);font-weight:500}
+.btn{display:inline-block;padding:.95rem 2.6rem;font-family:var(--sans);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;border:1px solid transparent;cursor:pointer;transition:all .35s ease}
+.btn-dark{background:var(--verde);color:#fff}
+.btn-dark:hover{background:var(--verde-deep)}
+.btn-outline{border-color:var(--verde);color:var(--verde);background:transparent}
+.btn-outline:hover{background:var(--verde);color:#fff}
+
+/* ---------- Top bar ---------- */
+.topbar{background:var(--verde);color:#EDE9E1;text-align:center;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;padding:.55rem 1rem}
+
+/* ---------- Header ---------- */
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+.nav-links{display:flex;gap:2.2rem}
+.nav-links a{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:400;position:relative;padding:.3rem 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--verde);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.logo{text-align:center}
+.logo .logo-name{font-family:var(--serif);font-size:2rem;letter-spacing:.28em;color:var(--verde);font-weight:600;line-height:1}
+.logo .logo-sub{font-size:.55rem;letter-spacing:.42em;color:var(--malva);text-transform:uppercase;font-weight:500;margin-top:.15rem}
+.nav-icons{display:flex;gap:1.4rem;align-items:center;justify-content:flex-end}
+.nav-icons svg{width:19px;height:19px;stroke:var(--negro);fill:none;stroke-width:1.4;cursor:pointer;transition:stroke .3s}
+.nav-icons svg:hover{stroke:var(--malva)}
+.icon-badge{position:relative}
+.icon-badge span{position:absolute;top:-7px;right:-9px;background:var(--malva);color:#fff;font-size:.55rem;width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:500}
+.nav-side{flex:1}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.burger span{width:24px;height:1.5px;background:var(--negro)}
+
+/* ---------- Hero ---------- */
+.hero{background:var(--crema);overflow:hidden;position:relative}
+.hero-slide{display:none;animation:fadeIn .8s ease}
+.hero-slide.active{display:block}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;min-height:560px;gap:2rem}
+.hero-text h1{font-size:clamp(2.6rem,5vw,4.3rem);color:var(--negro);margin:1.1rem 0 1.3rem;font-weight:500}
+.hero-text h1 em{font-style:italic;color:var(--verde)}
+.hero-text p{color:var(--gris);max-width:44ch;margin-bottom:2.2rem;font-size:.95rem}
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;padding:3rem 0}
+.hero-blob{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#E9E2D5,#DCD4C2)}
+.hero-leaf{position:absolute;right:4%;top:8%;opacity:.85}
+.hero-product{position:relative;z-index:2;filter:drop-shadow(0 30px 40px rgba(47,86,69,.25))}
+.hero-dots{display:flex;gap:.6rem;justify-content:center;padding:0 0 2rem}
+.hero-dots button{width:9px;height:9px;border-radius:50%;border:1px solid var(--verde);background:transparent;cursor:pointer;transition:background .3s}
+.hero-dots button.active{background:var(--verde)}
+
+/* ---------- Marquee ---------- */
+.marquee{background:var(--verde);color:#EFEBE2;overflow:hidden;padding:.9rem 0;border-block:1px solid var(--verde-deep)}
+.marquee-track{display:flex;gap:3.5rem;white-space:nowrap;animation:scroll 28s linear infinite;font-size:.75rem;letter-spacing:.28em;text-transform:uppercase}
+.marquee-track span{display:flex;align-items:center;gap:3.5rem}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- Sections ---------- */
+section{padding:5.5rem 0}
+.section-head{text-align:center;max-width:560px;margin:0 auto 3.5rem}
+.section-head h2{font-size:clamp(1.9rem,3.4vw,2.7rem);margin-top:.9rem;font-weight:500}
+.section-head p{color:var(--gris);font-size:.92rem;margin-top:.8rem}
+
+/* ---------- Products ---------- */
+.grid-products{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem}
+.card{position:relative;text-align:center;cursor:pointer}
+.card-media{background:var(--crema);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:background .4s}
+.card:hover .card-media{background:#EFEBE1}
+.card-media svg{transition:transform .5s ease}
+.card:hover .card-media svg{transform:translateY(-8px) scale(1.03)}
+.badge{position:absolute;top:14px;left:14px;background:var(--malva);color:#fff;font-size:.62rem;letter-spacing:.12em;padding:.25rem .6rem;font-weight:500}
+.badge.new{background:var(--verde)}
+.card-actions{position:absolute;left:50%;transform:translateX(-50%) translateY(12px);bottom:16px;opacity:0;transition:all .35s ease;width:82%}
+.card:hover .card-actions{opacity:1;transform:translateX(-50%) translateY(0)}
+.card-actions button{width:100%;background:var(--verde);color:#fff;border:none;padding:.75rem;font-family:var(--sans);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .3s}
+.card-actions button:hover{background:var(--verde-deep)}
+.card h3{font-size:1.25rem;margin-top:1.1rem;font-weight:600}
+.card .cat{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gris);margin-top:.15rem}
+.card .price{margin-top:.4rem;font-size:.95rem;font-weight:400}
+.card .price s{color:var(--gris);margin-right:.5rem;font-weight:300}
+.card .price b{color:var(--malva);font-weight:500}
+.stars{color:#C9A227;font-size:.75rem;letter-spacing:.15em;margin-top:.3rem}
+
+/* ---------- Split brand ---------- */
+.split{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4.5rem}
+.split-visual{position:relative;background:var(--crema);aspect-ratio:1/1.05;display:flex;align-items:center;justify-content:center}
+.split-visual::before{content:"";position:absolute;inset:22px;border:1px solid var(--verde);opacity:.35}
+.split-text h2{font-size:clamp(1.9rem,3.2vw,2.6rem);margin:.9rem 0 1.3rem;font-weight:500}
+.split-text p{color:var(--gris);font-size:.93rem;margin-bottom:1.2rem}
+.split-feats{margin:1.8rem 0 2.4rem;display:grid;gap:1rem}
+.split-feats li{display:flex;gap:.9rem;align-items:baseline;font-size:.9rem}
+.split-feats li::before{content:"—";color:var(--malva)}
+
+/* ---------- Ritual ---------- */
+.ritual{background:var(--verde);color:#EFEBE2}
+.ritual .eyebrow{color:#C9AC90}
+.ritual .section-head h2{color:#fff}
+.ritual .section-head p{color:#BFC9BE}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;text-align:center}
+.step-num{font-family:var(--serif);font-size:3rem;font-style:italic;color:#C9AC90;line-height:1}
+.step h3{font-size:1.2rem;color:#fff;margin:.9rem 0 .5rem;font-weight:600}
+.step p{font-size:.85rem;color:#B5C2B4}
+
+/* ---------- Testimonios ---------- */
+.testimonios{background:var(--crema)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.quote{background:#fff;padding:2.4rem 2rem;position:relative}
+.quote::before{content:"“";font-family:var(--serif);font-size:4rem;color:var(--malva);position:absolute;top:.6rem;left:1.4rem;line-height:1;opacity:.35}
+.quote p{font-family:var(--serif);font-size:1.12rem;font-style:italic;margin:1.4rem 0 1.4rem;color:var(--negro)}
+.quote .who{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gris)}
+.quote .who b{color:var(--verde);font-weight:500}
+
+/* ---------- Banner ---------- */
+.banner{background:linear-gradient(rgba(31,58,46,.85),rgba(31,58,46,.85)),var(--verde-deep);color:#fff;text-align:center;padding:6rem 0}
+.banner h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:500;max-width:20ch;margin:1rem auto 1.4rem}
+.banner p{color:#BFC9BE;max-width:52ch;margin:0 auto 2.4rem;font-size:.95rem}
+.banner .btn-outline{border-color:#fff;color:#fff}
+.banner .btn-outline:hover{background:#fff;color:var(--verde-deep)}
+
+/* ---------- Newsletter ---------- */
+.newsletter{text-align:center}
+.news-form{display:flex;max-width:480px;margin:2.2rem auto 0;border-bottom:1px solid var(--negro)}
+.news-form input{flex:1;border:none;outline:none;padding:.9rem .2rem;font-family:var(--sans);font-size:.9rem;background:transparent}
+.news-form button{background:none;border:none;font-family:var(--sans);font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;color:var(--verde);font-weight:500}
+.news-msg{margin-top:1rem;font-size:.85rem;color:var(--verde);min-height:1.2em}
+
+/* ---------- Footer ---------- */
+footer{background:#20241F;color:#A8ACA3;padding:4.5rem 0 0;font-size:.85rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:3rem;padding-bottom:3.5rem}
+.foot-logo .logo-name{font-family:var(--serif);font-size:1.7rem;letter-spacing:.28em;color:#E8E4DA;font-weight:600}
+.foot-logo .logo-sub{font-size:.52rem;letter-spacing:.4em;color:#B08D7E;text-transform:uppercase;margin-top:.2rem}
+.foot-logo p{margin-top:1.2rem;max-width:30ch;line-height:1.8}
+footer h4{font-family:var(--sans);font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:#E8E4DA;margin-bottom:1.3rem;font-weight:500}
+footer li{margin-bottom:.7rem}
+footer a:hover{color:#fff}
+.foot-bottom{border-top:1px solid #33372F;padding:1.4rem 0;display:flex;justify-content:space-between;font-size:.72rem;letter-spacing:.1em}
+.socials{display:flex;gap:1.1rem}
+.socials svg{width:16px;height:16px;fill:#A8ACA3;transition:fill .3s}
+.socials svg:hover{fill:#fff}
+
+/* ---------- Responsive ---------- */
+@media(max-width:980px){
+  .grid-products{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .quotes{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr;gap:2.5rem}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .hero-inner{grid-template-columns:1fr;text-align:center;min-height:auto;padding-top:3rem}
+  .hero-text p{margin-inline:auto}
+  .hero-blob{width:300px;height:300px}
+}
+@media(max-width:680px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:1.5rem 5%;gap:1.1rem;border-bottom:1px solid var(--linea)}
+  .grid-products{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .foot-bottom{flex-direction:column;gap:.8rem;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">Envío gratis en pedidos superiores a $50 · Cosmética coreana original</div>
+
+<header>
+  <div class="container nav">
+    <nav class="nav-side">
+      <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#tienda">Tienda</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#ritual">Ritual</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <a href="#inicio" class="logo">
+      <div class="logo-name">KORA</div>
+      <div class="logo-sub">Original K Beauty</div>
+    </a>
+    <div class="nav-icons nav-side">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+      <div class="icon-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.7-9.3-9C1.2 7.4 3.6 4 7 4c2 0 3.6 1.2 5 3 1.4-1.8 3-3 5-3 3.4 0 5.8 3.4 4.3 7-1.8 4.3-9.3 9-9.3 9z"/></svg>
+        <span>2</span>
+      </div>
+      <div class="icon-badge">
+        <svg viewBox="0 0 24 24"><path d="M6 7h12l1.5 13h-15L6 7z"/><path d="M9 9V6a3 3 0 016 0v3"/></svg>
+        <span>3</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio" style="padding:0">
+  <div class="hero-slide active">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <span class="eyebrow">Esenciales K-Beauty</span>
+        <h1>Belleza inspirada <em>en lo natural</em></h1>
+        <p>Fórmulas coreanas auténticas con ingredientes limpios y no tóxicos. Descubre el secreto de la piel de cristal con KORA.</p>
+        <a href="#tienda" class="btn btn-dark">Comprar ahora</a>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-blob"></div>
+        <svg class="hero-leaf" width="120" height="160" viewBox="0 0 120 160"><path d="M60 5 C110 45 105 110 60 155 C15 110 10 45 60 5z" fill="#2F5645" opacity=".9"/><path d="M60 20 L60 140" stroke="#DCD4C2" stroke-width="2"/></svg>
+        <!-- Frasco gotero -->
+        <svg class="hero-product" width="230" height="360" viewBox="0 0 230 360">
+          <rect x="98" y="10" width="34" height="26" rx="4" fill="#2F5645"/>
+          <rect x="106" y="36" width="18" height="52" rx="7" fill="#D8D3C8"/>
+          <path d="M111 60 L119 60 L116 84 L114 84 Z" fill="#B8B2A4"/>
+          <rect x="55" y="86" width="120" height="260" rx="18" fill="#F4F1EB" stroke="#E2DCD0"/>
+          <rect x="55" y="86" width="120" height="260" rx="18" fill="url(#shine)"/>
+          <text x="115" y="200" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="26" letter-spacing="6" fill="#2F5645" font-weight="600">KORA</text>
+          <text x="115" y="228" text-anchor="middle" font-family="Jost,sans-serif" font-size="8.5" letter-spacing="3" fill="#7A4A47">ESENCIA FACIAL</text>
+          <text x="115" y="244" text-anchor="middle" font-family="Jost,sans-serif" font-size="7" letter-spacing="2" fill="#8A8A85">GINSENG + ARROZ</text>
+          <line x1="85" y1="264" x2="145" y2="264" stroke="#2F5645" stroke-width="1" opacity=".4"/>
+          <defs><linearGradient id="shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".25" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".05"/></linearGradient></defs>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="hero-slide">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <span class="eyebrow">Nueva colección</span>
+        <h1>El ritual coreano <em>en tu piel</em></h1>
+        <p>Del sérum a la crema: cada paso pensado para hidratar, iluminar y proteger. Piel sana, luminosa y real.</p>
+        <a href="#ritual" class="btn btn-dark">Descubrir el ritual</a>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-blob" style="background:radial-gradient(circle at 35% 30%,#E4E9E2,#CBD6CA)"></div>
+        <!-- Tarro crema -->
+        <svg class="hero-product" width="260" height="320" viewBox="0 0 260 320">
+          <ellipse cx="130" cy="300" rx="95" ry="12" fill="#000" opacity=".06"/>
+          <rect x="45" y="120" width="170" height="180" rx="22" fill="#2F5645"/>
+          <rect x="40" y="88" width="180" height="42" rx="10" fill="#24433646"/>
+          <rect x="40" y="88" width="180" height="42" rx="10" fill="#243F33"/>
+          <text x="130" y="205" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="30" letter-spacing="7" fill="#F4F1EB" font-weight="600">KORA</text>
+          <text x="130" y="232" text-anchor="middle" font-family="Jost,sans-serif" font-size="9" letter-spacing="3" fill="#C9AC90">CREMA DE ARROZ</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="hero-dots">
+    <button class="active" data-slide="0" aria-label="Slide 1"></button>
+    <button data-slide="1" aria-label="Slide 2"></button>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Vegano &nbsp;✦&nbsp; Cruelty Free &nbsp;✦&nbsp; Ingredientes naturales &nbsp;✦&nbsp; Hecho en Corea &nbsp;✦&nbsp; Dermatológicamente probado &nbsp;✦&nbsp;</span>
+    <span>Vegano &nbsp;✦&nbsp; Cruelty Free &nbsp;✦&nbsp; Ingredientes naturales &nbsp;✦&nbsp; Hecho en Corea &nbsp;✦&nbsp; Dermatológicamente probado &nbsp;✦&nbsp;</span>
+  </div>
+</div>
+
+<!-- PRODUCTOS -->
+<section id="tienda">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Nuestros favoritos</span>
+      <h2>Productos destacados</h2>
+      <p>Consigue la piel que quieres sentir. Fórmulas K-Beauty auténticas seleccionadas por KORA.</p>
+    </div>
+    <div class="grid-products">
+
+      <div class="card">
+        <div class="card-media">
+          <span class="badge new">Nuevo</span>
+          <svg width="120" height="230" viewBox="0 0 120 230">
+            <rect x="48" y="6" width="24" height="20" rx="3" fill="#2F5645"/>
+            <rect x="53" y="26" width="14" height="34" rx="5" fill="#D8D3C8"/>
+            <rect x="25" y="60" width="70" height="164" rx="12" fill="#F4F1EB" stroke="#E2DCD0"/>
+            <text x="60" y="130" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="16" letter-spacing="3" fill="#2F5645" font-weight="600">KORA</text>
+            <text x="60" y="148" text-anchor="middle" font-family="Jost,sans-serif" font-size="5.5" letter-spacing="1.5" fill="#7A4A47">SÉRUM GINSENG</text>
+          </svg>
+          <div class="card-actions"><button>Añadir al carrito</button></div>
+        </div>
+        <h3>Sérum de Ginseng</h3>
+        <div class="cat">Tratamiento</div>
+        <div class="stars">★★★★★</div>
+        <div class="price"><b>$34.00</b></div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span class="badge">-15%</span>
+          <svg width="120" height="230" viewBox="0 0 120 230">
+            <ellipse cx="60" cy="222" rx="42" ry="5" fill="#000" opacity=".05"/>
+            <rect x="22" y="118" width="76" height="100" rx="14" fill="#2F5645"/>
+            <rect x="20" y="98" width="80" height="24" rx="6" fill="#243F33"/>
+            <text x="60" y="160" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" letter-spacing="3" fill="#F4F1EB" font-weight="600">KORA</text>
+            <text x="60" y="176" text-anchor="middle" font-family="Jost,sans-serif" font-size="5.5" letter-spacing="1.5" fill="#C9AC90">CREMA DE ARROZ</text>
+          </svg>
+          <div class="card-actions"><button>Añadir al carrito</button></div>
+        </div>
+        <h3>Crema de Arroz</h3>
+        <div class="cat">Hidratante</div>
+        <div class="stars">★★★★★</div>
+        <div class="price"><s>$32.00</s><b>$27.00</b></div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <svg width="120" height="230" viewBox="0 0 120 230">
+            <rect x="50" y="10" width="20" height="30" rx="3" fill="#2F5645"/>
+            <path d="M70 18 L92 18 L92 24 L70 24 Z" fill="#2F5645"/>
+            <rect x="30" y="40" width="60" height="184" rx="10" fill="#EFEAE0" stroke="#E2DCD0"/>
+            <text x="60" y="125" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" letter-spacing="3" fill="#2F5645" font-weight="600">KORA</text>
+            <text x="60" y="142" text-anchor="middle" font-family="Jost,sans-serif" font-size="5.2" letter-spacing="1.4" fill="#7A4A47">LIMPIADOR TÉ VERDE</text>
+          </svg>
+          <div class="card-actions"><button>Añadir al carrito</button></div>
+        </div>
+        <h3>Limpiador de Té Verde</h3>
+        <div class="cat">Limpieza</div>
+        <div class="stars">★★★★☆</div>
+        <div class="price"><b>$22.00</b></div>
+      </div>
+
+      <div class="card">
+        <div class="card-media">
+          <span class="badge">-7%</span>
+          <svg width="120" height="230" viewBox="0 0 120 230">
+            <path d="M42 30 Q42 16 60 16 Q78 16 78 30 L78 44 L42 44 Z" fill="#2F5645"/>
+            <path d="M36 44 L84 44 L92 210 Q92 224 60 224 Q28 224 28 210 Z" fill="#F4F1EB" stroke="#E2DCD0"/>
+            <text x="60" y="130" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" letter-spacing="3" fill="#2F5645" font-weight="600">KORA</text>
+            <text x="60" y="147" text-anchor="middle" font-family="Jost,sans-serif" font-size="5.2" letter-spacing="1.4" fill="#7A4A47">PROTECTOR SPF 50+</text>
+          </svg>
+          <div class="card-actions"><button>Añadir al carrito</button></div>
+        </div>
+        <h3>Protector Solar SPF 50+</h3>
+        <div class="cat">Protección</div>
+        <div class="stars">★★★★★</div>
+        <div class="price"><s>$28.00</s><b>$26.00</b></div>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:3.2rem">
+      <a href="#" class="btn btn-outline">Ver toda la tienda</a>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section class="testimonios" id="nosotros" style="background:var(--crema)">
+  <div class="container split">
+    <div class="split-visual">
+      <!-- Rostro line-art estilo logo -->
+      <svg width="60%" viewBox="0 0 300 400" fill="none" stroke="#2F5645" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Contorno: frente, nariz, labios, mentón, cuello -->
+        <path d="M172 42
+                 C124 50 100 90 102 128
+                 C103 146 99 156 95 164
+                 C88 172 80 176 83 182
+                 C85 186 92 186 93 190
+                 C94 194 88 195 88 199
+                 C88 203 95 203 95 207
+                 C95 211 90 212 91 217
+                 C92 222 99 222 102 226
+                 C107 232 108 240 116 246
+                 C126 254 140 256 148 266
+                 C156 278 152 296 158 312"/>
+        <!-- Parte posterior de la cabeza y cabello -->
+        <path d="M172 42
+                 C216 48 240 86 236 128
+                 C233 160 216 182 194 196
+                 C206 206 228 212 238 232
+                 C224 240 204 234 192 242
+                 C196 262 190 284 182 300"/>
+        <!-- Ceja -->
+        <path d="M120 132 C130 124 144 123 154 129"/>
+        <!-- Ojo cerrado -->
+        <path d="M124 150 C132 144 144 144 151 150"/>
+      </svg>
+    </div>
+    <div class="split-text">
+      <span class="eyebrow">Sobre KORA</span>
+      <h2>Auténtica belleza coreana, sin artificios</h2>
+      <p>Nacimos para acercarte la cosmética coreana original: fórmulas limpias, texturas ligeras y resultados visibles. Cada producto KORA se elabora en Corea con ingredientes de origen natural.</p>
+      <ul class="split-feats">
+        <li>Fórmulas veganas y libres de crueldad animal</li>
+        <li>Sin parabenos, sulfatos ni fragancias sintéticas</li>
+        <li>Aptas para todo tipo de piel, incluso sensible</li>
+        <li>Testadas dermatológicamente en laboratorios coreanos</li>
+      </ul>
+      <a href="#tienda" class="btn btn-dark">Conocer los productos</a>
+    </div>
+  </div>
+</section>
+
+<!-- RITUAL -->
+<section class="ritual" id="ritual">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Paso a paso</span>
+      <h2>El ritual KORA en 4 pasos</h2>
+      <p>La rutina coreana simplificada para tu día a día. Menos de 5 minutos, resultados reales.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Limpia</h3>
+        <p>Elimina impurezas y restos de maquillaje con nuestro limpiador de té verde.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Trata</h3>
+        <p>Aplica la esencia y el sérum de ginseng para iluminar y unificar el tono.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Hidrata</h3>
+        <p>Sella la hidratación con la crema de arroz, ligera y de rápida absorción.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Protege</h3>
+        <p>Termina con protector solar SPF 50+, el verdadero secreto antiedad coreano.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Testimonios</span>
+      <h2>Lo que dicen nuestras clientas</h2>
+    </div>
+    <div class="quotes">
+      <div class="quote">
+        <p>Mi piel cambió por completo en tres semanas. La esencia de KORA es lo mejor que he probado, y he probado mucho.</p>
+        <div class="who"><b>Mariana G.</b> — Ciudad de México</div>
+      </div>
+      <div class="quote">
+        <p>Texturas ligeras, olor suave y resultados reales. Por fin cosmética coreana original sin pagar envíos carísimos.</p>
+        <div class="who"><b>Lucía R.</b> — Buenos Aires</div>
+      </div>
+      <div class="quote">
+        <p>El protector solar no deja rastro blanco y la crema de arroz es una maravilla. Repetiré sin dudarlo.</p>
+        <div class="who"><b>Valentina S.</b> — Bogotá</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER -->
+<section class="banner" style="padding:6rem 0">
+  <div class="container">
+    <span class="eyebrow" style="color:#C9AC90">Oferta de lanzamiento</span>
+    <h2>15% de descuento en tu primera compra</h2>
+    <p>Suscríbete a nuestra newsletter y recibe tu código de bienvenida, además de consejos de skincare coreano cada semana.</p>
+    <a href="#newsletter" class="btn btn-outline">Quiero mi descuento</a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter" id="newsletter">
+  <div class="container">
+    <span class="eyebrow">Newsletter</span>
+    <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);margin-top:.9rem;font-weight:500">Únete al club KORA</h2>
+    <p style="color:var(--gris);margin-top:.8rem;font-size:.92rem">Novedades, rituales y ofertas exclusivas. Sin spam, prometido.</p>
+    <form class="news-form" id="newsForm">
+      <input type="email" placeholder="Tu correo electrónico" required aria-label="Correo electrónico">
+      <button type="submit">Suscribirme</button>
+    </form>
+    <div class="news-msg" id="newsMsg"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contacto">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-logo">
+        <div class="logo-name">KORA</div>
+        <div class="logo-sub">Original K Beauty</div>
+        <p>Cosmética coreana auténtica con ingredientes naturales. Belleza real para pieles reales.</p>
+      </div>
+      <div>
+        <h4>Tienda</h4>
+        <ul>
+          <li><a href="#tienda">Limpieza</a></li>
+          <li><a href="#tienda">Tratamiento</a></li>
+          <li><a href="#tienda">Hidratación</a></li>
+          <li><a href="#tienda">Protección solar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="#">Envíos y devoluciones</a></li>
+          <li><a href="#">Preguntas frecuentes</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Privacidad</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>hola@korabeauty.com</li>
+          <li>+52 55 0000 0000</li>
+          <li>Lun – Vie · 9:00 a 18:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 KORA — Original K Beauty. Todos los derechos reservados.</div>
+      <div class="socials">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8C2.4 4 4 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 3.6a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zm0 10.2a4 4 0 110-8 4 4 0 010 8zm6.4-10.5a1.44 1.44 0 11-2.9 0 1.44 1.44 0 012.9 0z"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 3c.4 2.2 1.8 3.6 4 3.8v3c-1.5 0-2.9-.5-4-1.3v6.4c0 4-2.7 6.4-6.1 6.4-3.2 0-5.9-2.4-5.9-5.7 0-3.4 2.9-5.9 6.5-5.6v3.1c-1.8-.3-3.4.8-3.4 2.5 0 1.5 1.2 2.6 2.8 2.6 1.8 0 3-1.3 3-3.4V3h3.1z"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.6V3.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.3H7.6V13h2.7v8h3.2z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Slider hero
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.hero-dots button');
+let current = 0, timer;
+function goTo(i){
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  current = i;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+}
+dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.slide); restart(); }));
+function restart(){ clearInterval(timer); timer = setInterval(() => goTo((current+1)%slides.length), 6000); }
+restart();
+
+// Menú móvil
+document.getElementById('burger').addEventListener('click', () =>
+  document.getElementById('navLinks').classList.toggle('open'));
+
+// Newsletter
+document.getElementById('newsForm').addEventListener('submit', e => {
+  e.preventDefault();
+  document.getElementById('newsMsg').textContent = '¡Gracias por suscribirte! Revisa tu correo para recibir tu código de descuento.';
+  e.target.reset();
+});
+</script>
+</body>
+</html>
