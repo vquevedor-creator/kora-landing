@@ -93,7 +93,7 @@ section{padding:5.5rem 0}
 .card{position:relative;text-align:center;cursor:pointer}
 .card-media{background:var(--crema);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:background .4s}
 .card:hover .card-media{background:#EFEBE1}
-.card-media svg{transition:transform .5s ease}
+.card-media svg{transition:transform .5s ease;height:68%;width:auto}
 .card:hover .card-media svg{transform:translateY(-8px) scale(1.03)}
 .badge{position:absolute;top:14px;left:14px;background:var(--malva);color:#fff;font-size:.62rem;letter-spacing:.12em;padding:.25rem .6rem;font-weight:500}
 .badge.new{background:var(--verde)}
@@ -176,14 +176,43 @@ footer a:hover{color:#fff}
   .hero-text p{margin-inline:auto}
   .hero-blob{width:300px;height:300px}
 }
+/* Pantallas táctiles: mostrar siempre el botón de añadir al carrito */
+@media(hover:none){
+  .card-actions{opacity:1;transform:translateX(-50%) translateY(0)}
+}
 @media(max-width:680px){
+  .topbar{font-size:.6rem;letter-spacing:.1em;padding:.5rem .8rem}
   .nav-links{display:none}
   .burger{display:flex}
   .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:1.5rem 5%;gap:1.1rem;border-bottom:1px solid var(--linea)}
-  .grid-products{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
-  .foot-grid{grid-template-columns:1fr}
-  .foot-bottom{flex-direction:column;gap:.8rem;align-items:center}
+  .logo .logo-name{font-size:1.6rem}
+  .logo .logo-sub{font-size:.48rem;letter-spacing:.34em}
+  .nav-icons{gap:1rem}
+  section{padding:3.5rem 0}
+  .section-head{margin-bottom:2.4rem}
+  .hero-inner{padding-top:2.2rem;gap:.5rem}
+  .hero-text p{font-size:.9rem;margin-bottom:1.6rem}
+  .hero-visual{padding:1.5rem 0 2rem}
+  .hero-blob{width:250px;height:250px}
+  .hero-product{height:290px;width:auto}
+  .hero-leaf{width:70px;height:auto;right:6%;top:2%}
+  .marquee-track{font-size:.62rem;letter-spacing:.2em}
+  .grid-products{grid-template-columns:repeat(2,1fr);gap:1rem 0.8rem}
+  .card h3{font-size:1.05rem;margin-top:.8rem}
+  .card .cat{font-size:.58rem}
+  .card .price{font-size:.85rem}
+  .badge{font-size:.55rem;top:10px;left:10px}
+  .card-actions{width:88%;bottom:10px}
+  .card-actions button{padding:.6rem;font-size:.58rem;letter-spacing:.14em}
+  .split-visual{aspect-ratio:1/1}
+  .steps{grid-template-columns:1fr;gap:2rem}
+  .quote{padding:2rem 1.5rem}
+  .quote p{font-size:1.02rem}
+  .banner{padding:4rem 0}
+  .btn{padding:.85rem 2rem;font-size:.72rem}
+  .news-form{width:92%}
+  .foot-grid{grid-template-columns:1fr;gap:2.2rem;padding-bottom:2.5rem}
+  .foot-bottom{flex-direction:column;gap:.8rem;align-items:center;text-align:center}
 }
 </style>
 </head>
@@ -566,8 +595,11 @@ function restart(){ clearInterval(timer); timer = setInterval(() => goTo((curren
 restart();
 
 // Menú móvil
+const navLinks = document.getElementById('navLinks');
 document.getElementById('burger').addEventListener('click', () =>
-  document.getElementById('navLinks').classList.toggle('open'));
+  navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a =>
+  a.addEventListener('click', () => navLinks.classList.remove('open')));
 
 // Newsletter
 document.getElementById('newsForm').addEventListener('submit', e => {
