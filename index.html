@@ -28,8 +28,8 @@ body{font-family:var(--sans);color:var(--negro);background:var(--blanco);line-he
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 ul{list-style:none}
-.container{width:min(1200px,92%);margin:0 auto}
-h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15}
+.container{width:min(1280px,94%);margin:0 auto}
+h1,h2,h3{font-family:var(--sans);font-weight:500;line-height:1.12;letter-spacing:-.025em}
 .eyebrow{font-family:var(--sans);font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;color:var(--malva);font-weight:500}
 .btn{display:inline-block;padding:.95rem 2.6rem;font-family:var(--sans);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;border:1px solid transparent;cursor:pointer;transition:all .35s ease}
 .btn-dark{background:var(--verde);color:#fff}
@@ -42,13 +42,13 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15}
 
 /* ---------- Header ---------- */
 header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:84px;padding:.9rem 0}
 .nav-links{display:flex;gap:2.2rem}
 .nav-links a{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:400;position:relative;padding:.3rem 0}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--verde);transition:width .3s}
 .nav-links a:hover::after{width:100%}
 .logo{text-align:center}
-.logo .logo-name{font-family:var(--serif);font-size:2rem;letter-spacing:.28em;color:var(--verde);font-weight:600;line-height:1}
+.logo .logo-name{font-family:var(--sans);font-size:2rem;letter-spacing:.2em;color:var(--negro);font-weight:500;line-height:1}
 .logo .logo-sub{font-size:.55rem;letter-spacing:.42em;color:var(--malva);text-transform:uppercase;font-weight:500;margin-top:.15rem}
 .nav-icons{display:flex;gap:1.4rem;align-items:center;justify-content:flex-end}
 .nav-icons svg{width:19px;height:19px;stroke:var(--negro);fill:none;stroke-width:1.4;cursor:pointer;transition:stroke .3s}
@@ -64,11 +64,21 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 .hero-slide{display:none;animation:fadeIn .8s ease}
 .hero-slide.active{display:block}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;min-height:560px;gap:2rem}
-.hero-text h1{font-size:clamp(2.6rem,5vw,4.3rem);color:var(--negro);margin:1.1rem 0 1.3rem;font-weight:500}
-.hero-text h1 em{font-style:italic;color:var(--verde)}
-.hero-text p{color:var(--gris);max-width:44ch;margin-bottom:2.2rem;font-size:.95rem}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;min-height:600px;gap:2rem}
+.hero-text{position:relative;z-index:2}
+.hero-text h1{font-size:clamp(3rem,5.4vw,4.8rem);color:var(--negro);margin:1.1rem 0 1.4rem;font-weight:500;line-height:1.06;letter-spacing:-.045em}
+.hero-text h1 em{font-style:normal;color:var(--verde)}
+.hero-text p{color:#666B64;max-width:44ch;margin-bottom:2.2rem;font-size:.95rem}
 .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;padding:3rem 0}
+.hero-slide--photo{position:relative;overflow:hidden}
+.hero-slide--photo::after{content:"";position:absolute;z-index:0;inset:0;background:linear-gradient(90deg,rgba(247,245,241,.98) 0%,rgba(247,245,241,.84) 34%,rgba(247,245,241,.16) 62%,transparent 78%);pointer-events:none}
+.hero-slide--photo .hero-inner{position:relative;z-index:1;grid-template-columns:1fr;min-height:620px}
+.hero-slide--photo .hero-text{max-width:600px}
+.hero-slide--photo .hero-text p{font-weight:400}
+.hero-visual--photo{position:absolute;z-index:-1;top:0;bottom:0;left:50%;right:auto;width:100vw;min-height:0;padding:0;overflow:hidden;margin:0;transform:translateX(-50%)}
+.hero-photo{width:100%;height:100%;object-fit:cover;object-position:center;filter:none}
+.hero-visual--catalog{align-self:stretch;min-height:600px;padding:1.5rem 0;overflow:hidden}
+.hero-catalog-photo{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;filter:drop-shadow(0 28px 26px rgba(74,48,46,.12))}
 .hero-blob{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#E9E2D5,#DCD4C2)}
 .hero-leaf{position:absolute;right:4%;top:8%;opacity:.85}
 .hero-product{position:relative;z-index:2;filter:drop-shadow(0 30px 40px rgba(47,86,69,.25))}
@@ -83,35 +93,52 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdr
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ---------- Sections ---------- */
-section{padding:5.5rem 0}
-.section-head{text-align:center;max-width:560px;margin:0 auto 3.5rem}
-.section-head h2{font-size:clamp(1.9rem,3.4vw,2.7rem);margin-top:.9rem;font-weight:500}
+section{padding:6.5rem 0}
+.section-head{text-align:center;max-width:620px;margin:0 auto 3.8rem}
+.section-head h2{font-size:clamp(2rem,3.4vw,3rem);margin-top:.9rem;font-weight:500}
 .section-head p{color:var(--gris);font-size:.92rem;margin-top:.8rem}
 
 /* ---------- Products ---------- */
 .grid-products{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
-.card{position:relative;text-align:center;cursor:pointer}
-.card-media{background:var(--crema);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:background .4s}
-.card:hover .card-media{background:#EFEBE1}
-.card-media img{width:88%;height:88%;object-fit:contain;mix-blend-mode:multiply;transition:transform .5s ease}
+.card{position:relative;text-align:center;cursor:pointer;display:flex;flex-direction:column}
+.card-media{background:radial-gradient(circle at 50% 38%,#fff 0,#FAF8F4 48%,#F0ECE4 100%);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;isolation:isolate;transition:filter .4s}
+.card-media--sage{background:radial-gradient(circle at 50% 36%,#fff 0,#F5F7F0 52%,#E8EDE3 100%)}
+.card-media--rose{background:radial-gradient(circle at 50% 36%,#fff 0,#FBF5F4 52%,#F2E8E5 100%)}
+.card-media--stone{background:radial-gradient(circle at 50% 36%,#fff 0,#F8F6F2 52%,#ECE8E0 100%)}
+.card-media::before{content:"";position:absolute;z-index:0;left:18%;right:18%;bottom:10%;height:8%;border-radius:50%;background:rgba(54,48,39,.12);filter:blur(14px);transform:scaleX(.82)}
+.card:hover .card-media{filter:saturate(1.03) brightness(.99)}
+.card-media img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;mix-blend-mode:normal;filter:contrast(1.015) saturate(.98);transition:transform .5s ease,filter .5s ease}
+.card-media img.product-fill{object-fit:cover}
+.card-media img.product-cutout{width:88%;height:88%;mix-blend-mode:normal;filter:drop-shadow(0 18px 16px rgba(46,40,32,.14))}
+.card-media img.product-cutout--tall{width:106%;height:106%}
 .card:hover .card-media img{transform:translateY(-6px) scale(1.04)}
-.badge{position:absolute;top:14px;left:14px;background:var(--malva);color:#fff;font-size:.62rem;letter-spacing:.12em;padding:.25rem .6rem;font-weight:500}
+.badge{position:absolute;z-index:3;top:14px;left:14px;background:var(--malva);color:#fff;font-size:.62rem;letter-spacing:.12em;padding:.25rem .6rem;font-weight:500}
 .badge.new{background:var(--verde)}
-.card-actions{position:absolute;left:50%;transform:translateX(-50%) translateY(12px);bottom:16px;opacity:0;transition:all .35s ease;width:82%}
+.card-actions{position:absolute;z-index:3;left:50%;transform:translateX(-50%) translateY(12px);bottom:16px;opacity:0;transition:all .35s ease;width:82%}
 .card:hover .card-actions{opacity:1;transform:translateX(-50%) translateY(0)}
 .card-actions button{width:100%;background:var(--verde);color:#fff;border:none;padding:.75rem;font-family:var(--sans);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .3s}
 .card-actions button:hover{background:var(--verde-deep)}
-.card h3{font-size:1.25rem;margin-top:1.1rem;font-weight:600}
-.card .cat{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gris);margin-top:.15rem}
-.card .price{margin-top:.4rem;font-size:.95rem;font-weight:400}
+.card h3{order:2;font-size:1rem;margin-top:.3rem;font-weight:500;letter-spacing:-.01em}
+.card .cat{order:3;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gris);margin-top:.22rem}
+.card .price{order:1;margin-top:1.15rem;font-size:.95rem;font-weight:400}
 .card .price s{color:var(--gris);margin-right:.5rem;font-weight:300}
-.card .price b{color:var(--malva);font-weight:500}
-.stars{color:#C9A227;font-size:.75rem;letter-spacing:.15em;margin-top:.3rem}
+.card .price b{color:var(--negro);font-weight:500}
+.stars{order:4;color:#B9963B;font-size:.68rem;letter-spacing:.12em;margin-top:.35rem;opacity:.72}
+
+/* ---------- Service promises ---------- */
+.services{padding:0;border-block:1px solid var(--linea);background:#fff}
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.service{padding:2.7rem 2rem;border-right:1px solid var(--linea)}
+.service:last-child{border-right:0}
+.service-num{display:block;font-size:.68rem;letter-spacing:.18em;color:var(--malva);font-weight:500;margin-bottom:.9rem}
+.service h3{font-size:1rem;font-weight:500;letter-spacing:0;margin-bottom:.4rem}
+.service p{font-size:.78rem;color:var(--gris)}
 
 /* ---------- Split brand ---------- */
 .split{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4.5rem}
-.split-visual{position:relative;background:var(--crema);aspect-ratio:1/1.05;display:flex;align-items:center;justify-content:center}
-.split-visual::before{content:"";position:absolute;inset:22px;border:1px solid var(--verde);opacity:.35}
+.split-visual{position:relative;background:#F1EFEA;aspect-ratio:1/1.05;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.split-visual::before{display:none}
+.story-photo{width:100%;height:100%;object-fit:cover;mix-blend-mode:normal}
 .split-text h2{font-size:clamp(1.9rem,3.2vw,2.6rem);margin:.9rem 0 1.3rem;font-weight:500}
 .split-text p{color:var(--gris);font-size:.93rem;margin-bottom:1.2rem}
 .split-feats{margin:1.8rem 0 2.4rem;display:grid;gap:1rem}
@@ -154,7 +181,7 @@ section{padding:5.5rem 0}
 /* ---------- Footer ---------- */
 footer{background:#20241F;color:#A8ACA3;padding:4.5rem 0 0;font-size:.85rem}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:3rem;padding-bottom:3.5rem}
-.foot-logo .logo-name{font-family:var(--serif);font-size:1.7rem;letter-spacing:.28em;color:#E8E4DA;font-weight:600}
+.foot-logo .logo-name{font-family:var(--sans);font-size:1.7rem;letter-spacing:.2em;color:#E8E4DA;font-weight:500}
 .foot-logo .logo-sub{font-size:.52rem;letter-spacing:.4em;color:#B08D7E;text-transform:uppercase;margin-top:.2rem}
 .foot-logo p{margin-top:1.2rem;max-width:30ch;line-height:1.8}
 footer h4{font-family:var(--sans);font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:#E8E4DA;margin-bottom:1.3rem;font-weight:500}
@@ -170,10 +197,19 @@ footer a:hover{color:#fff}
   .grid-products{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(2,1fr)}
   .quotes{grid-template-columns:1fr}
+  .service-grid{grid-template-columns:repeat(2,1fr)}
+  .service:nth-child(2){border-right:0}
+  .service:nth-child(-n+2){border-bottom:1px solid var(--linea)}
   .split{grid-template-columns:1fr;gap:2.5rem}
   .foot-grid{grid-template-columns:1fr 1fr}
   .hero-inner{grid-template-columns:1fr;text-align:center;min-height:auto;padding-top:3rem}
   .hero-text p{margin-inline:auto}
+  .hero-slide--photo::after{background:linear-gradient(180deg,rgba(247,245,241,.98) 0%,rgba(247,245,241,.92) 42%,rgba(247,245,241,.2) 68%,transparent 82%)}
+  .hero-slide--photo .hero-inner{min-height:650px;align-items:start;padding-top:3.5rem}
+  .hero-slide--photo .hero-text{max-width:620px;margin-inline:auto}
+  .hero-visual--photo{top:0;bottom:0;left:50%;right:auto;width:100vw;min-height:0;margin:0;padding:0;transform:translateX(-50%)}
+  .hero-photo{object-position:66% center}
+  .hero-visual--catalog{min-height:390px;padding:0}
   .hero-blob{width:300px;height:300px}
 }
 /* Pantallas táctiles: mostrar siempre el botón de añadir al carrito */
@@ -191,20 +227,29 @@ footer a:hover{color:#fff}
   section{padding:3.5rem 0}
   .section-head{margin-bottom:2.4rem}
   .hero-inner{padding-top:2.2rem;gap:.5rem}
+  .hero-text h1{font-size:clamp(2.55rem,12vw,3.35rem);letter-spacing:-.04em}
   .hero-text p{font-size:.9rem;margin-bottom:1.6rem}
   .hero-visual{padding:1.5rem 0 2rem}
+  .hero-slide--photo .hero-inner{min-height:630px;padding-top:3rem}
+  .hero-slide--photo::after{background:linear-gradient(180deg,rgba(247,245,241,.99) 0%,rgba(247,245,241,.94) 45%,rgba(247,245,241,.18) 70%,transparent 86%)}
+  .hero-visual--photo{top:0;bottom:0;left:50%;right:auto;width:100vw;min-height:0;margin:0;padding:0;transform:translateX(-50%)}
+  .hero-photo{object-position:68% bottom}
+  .hero-visual--catalog{min-height:320px;padding:0}
   .hero-blob{width:250px;height:250px}
   .hero-product{height:290px;width:auto}
   .hero-leaf{width:70px;height:auto;right:6%;top:2%}
   .marquee-track{font-size:.62rem;letter-spacing:.2em}
   .grid-products{grid-template-columns:repeat(2,1fr);gap:1rem 0.8rem}
-  .card h3{font-size:1.05rem;margin-top:.8rem}
+  .card h3{font-size:.92rem;margin-top:.3rem}
   .card .cat{font-size:.58rem}
   .card .price{font-size:.85rem}
   .badge{font-size:.55rem;top:10px;left:10px}
   .card-actions{width:88%;bottom:10px}
   .card-actions button{padding:.6rem;font-size:.58rem;letter-spacing:.14em}
   .split-visual{aspect-ratio:1/1}
+  .service-grid{grid-template-columns:1fr}
+  .service{padding:1.8rem 1.2rem;border-right:0;border-bottom:1px solid var(--linea)}
+  .service:last-child{border-bottom:0}
   .steps{grid-template-columns:1fr;gap:2rem}
   .quote{padding:2rem 1.5rem}
   .quote p{font-size:1.02rem}
@@ -253,30 +298,16 @@ footer a:hover{color:#fff}
 
 <!-- HERO -->
 <section class="hero" id="inicio" style="padding:0">
-  <div class="hero-slide active">
+  <div class="hero-slide hero-slide--photo active">
     <div class="container hero-inner">
       <div class="hero-text">
         <span class="eyebrow">Esenciales K-Beauty</span>
-        <h1>Belleza inspirada <em>en lo natural</em></h1>
-        <p>Fórmulas coreanas auténticas con ingredientes limpios y no tóxicos. Descubre el secreto de la piel de cristal con KORA.</p>
+        <h1>Belleza inspirada <em>en la vida real</em></h1>
+        <p>Fórmulas coreanas limpias, eficaces y fáciles de incorporar a tu rutina. Cuidado real para una piel que se siente saludable.</p>
         <a href="#tienda" class="btn btn-dark">Comprar ahora</a>
       </div>
-      <div class="hero-visual">
-        <div class="hero-blob"></div>
-        <svg class="hero-leaf" width="120" height="160" viewBox="0 0 120 160"><path d="M60 5 C110 45 105 110 60 155 C15 110 10 45 60 5z" fill="#2F5645" opacity=".9"/><path d="M60 20 L60 140" stroke="#DCD4C2" stroke-width="2"/></svg>
-        <!-- Frasco gotero -->
-        <svg class="hero-product" width="230" height="360" viewBox="0 0 230 360">
-          <rect x="98" y="10" width="34" height="26" rx="4" fill="#2F5645"/>
-          <rect x="106" y="36" width="18" height="52" rx="7" fill="#D8D3C8"/>
-          <path d="M111 60 L119 60 L116 84 L114 84 Z" fill="#B8B2A4"/>
-          <rect x="55" y="86" width="120" height="260" rx="18" fill="#F4F1EB" stroke="#E2DCD0"/>
-          <rect x="55" y="86" width="120" height="260" rx="18" fill="url(#shine)"/>
-          <text x="115" y="200" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="26" letter-spacing="6" fill="#2F5645" font-weight="600">KORA</text>
-          <text x="115" y="228" text-anchor="middle" font-family="Jost,sans-serif" font-size="8.5" letter-spacing="3" fill="#7A4A47">ESENCIA FACIAL</text>
-          <text x="115" y="244" text-anchor="middle" font-family="Jost,sans-serif" font-size="7" letter-spacing="2" fill="#8A8A85">GINSENG + ARROZ</text>
-          <line x1="85" y1="264" x2="145" y2="264" stroke="#2F5645" stroke-width="1" opacity=".4"/>
-          <defs><linearGradient id="shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".25" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".05"/></linearGradient></defs>
-        </svg>
+      <div class="hero-visual hero-visual--photo">
+        <img class="hero-photo" src="images/hero-kora-natural-v2.png" alt="Sérum facial junto a hojas verdes bajo luz natural" fetchpriority="high">
       </div>
     </div>
   </div>
@@ -288,17 +319,8 @@ footer a:hover{color:#fff}
         <p>Del sérum a la crema: cada paso pensado para hidratar, iluminar y proteger. Piel sana, luminosa y real.</p>
         <a href="#ritual" class="btn btn-dark">Descubrir el ritual</a>
       </div>
-      <div class="hero-visual">
-        <div class="hero-blob" style="background:radial-gradient(circle at 35% 30%,#E4E9E2,#CBD6CA)"></div>
-        <!-- Tarro crema -->
-        <svg class="hero-product" width="260" height="320" viewBox="0 0 260 320">
-          <ellipse cx="130" cy="300" rx="95" ry="12" fill="#000" opacity=".06"/>
-          <rect x="45" y="120" width="170" height="180" rx="22" fill="#2F5645"/>
-          <rect x="40" y="88" width="180" height="42" rx="10" fill="#24433646"/>
-          <rect x="40" y="88" width="180" height="42" rx="10" fill="#243F33"/>
-          <text x="130" y="205" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="30" letter-spacing="7" fill="#F4F1EB" font-weight="600">KORA</text>
-          <text x="130" y="232" text-anchor="middle" font-family="Jost,sans-serif" font-size="9" letter-spacing="3" fill="#C9AC90">CREMA DE ARROZ</text>
-        </svg>
+      <div class="hero-visual hero-visual--catalog">
+        <img class="hero-catalog-photo" src="images/medicube-serum-clean-v2.jpg" alt="Medicube PDRN Pink Peptide Serum" loading="eager" decoding="async">
       </div>
     </div>
   </div>
@@ -327,9 +349,9 @@ footer a:hover{color:#fff}
     <div class="grid-products">
 
       <div class="card">
-        <div class="card-media">
+        <div class="card-media card-media--sage">
           <span class="badge new">Nuevo</span>
-          <img src="images/anua-toner.jpg" alt="Anua Azelaic Acid 3 Cica Skin Clarifying Toner" loading="lazy">
+          <img class="product-fill" src="images/anua-toner-clean-v2.jpg" alt="Anua Azelaic Acid 3 Cica Skin Clarifying Toner" loading="lazy" decoding="async">
           <div class="card-actions"><button>Añadir al carrito</button></div>
         </div>
         <h3>Anua Azelaic 3 Cica Toner</h3>
@@ -339,9 +361,9 @@ footer a:hover{color:#fff}
       </div>
 
       <div class="card">
-        <div class="card-media">
+        <div class="card-media card-media--rose">
           <span class="badge">-10%</span>
-          <img src="images/medicube-serum.jpg" alt="Medicube PDRN Pink Peptide Serum" loading="lazy">
+          <img class="product-fill" src="images/medicube-serum-clean-v2.jpg" alt="Medicube PDRN Pink Peptide Serum" loading="lazy" decoding="async">
           <div class="card-actions"><button>Añadir al carrito</button></div>
         </div>
         <h3>Medicube PDRN Pink Serum</h3>
@@ -351,8 +373,8 @@ footer a:hover{color:#fff}
       </div>
 
       <div class="card">
-        <div class="card-media">
-          <img src="images/medicube-cream.jpg" alt="Medicube PDRN Pink Collagen Capsule Cream" loading="lazy">
+        <div class="card-media card-media--rose">
+          <img class="product-fill" src="images/medicube-cream-clean-v2.jpg" alt="Medicube PDRN Pink Collagen Capsule Cream" loading="lazy" decoding="async">
           <div class="card-actions"><button>Añadir al carrito</button></div>
         </div>
         <h3>Medicube PDRN Collagen Cream</h3>
@@ -362,8 +384,8 @@ footer a:hover{color:#fff}
       </div>
 
       <div class="card">
-        <div class="card-media">
-          <img src="images/biodance-pads.jpg" alt="Biodance Collagen Gel Toner Pads" loading="lazy">
+        <div class="card-media card-media--rose">
+          <img class="product-fill" src="images/biodance-pads-clean-v2.jpg" alt="Biodance Collagen Gel Toner Pads" loading="lazy" decoding="async">
           <div class="card-actions"><button>Añadir al carrito</button></div>
         </div>
         <h3>Biodance Collagen Toner Pads</h3>
@@ -373,8 +395,8 @@ footer a:hover{color:#fff}
       </div>
 
       <div class="card">
-        <div class="card-media">
-          <img src="images/ordinary-ha.jpg" alt="The Ordinary Hyaluronic Acid 2% + B5" loading="lazy">
+        <div class="card-media card-media--stone">
+          <img class="product-cutout product-cutout--tall" src="images/ordinary-ha-clean-v2.png" alt="The Ordinary Hyaluronic Acid 2% + B5" loading="lazy" decoding="async">
           <div class="card-actions"><button>Añadir al carrito</button></div>
         </div>
         <h3>The Ordinary Hyaluronic Acid 2%</h3>
@@ -384,9 +406,9 @@ footer a:hover{color:#fff}
       </div>
 
       <div class="card">
-        <div class="card-media">
+        <div class="card-media card-media--stone">
           <span class="badge">Set</span>
-          <img src="images/ordinary-set.png" alt="The Ordinary The Daily Set" loading="lazy">
+          <img class="product-cutout" src="images/ordinary-set-clean-v2.png" alt="The Ordinary The Daily Set" loading="lazy" decoding="async">
           <div class="card-actions"><button>Añadir al carrito</button></div>
         </div>
         <h3>The Ordinary Daily Set</h3>
@@ -402,42 +424,42 @@ footer a:hover{color:#fff}
   </div>
 </section>
 
+<!-- BENEFICIOS DE COMPRA -->
+<section class="services" aria-label="Beneficios de compra">
+  <div class="container service-grid">
+    <div class="service">
+      <span class="service-num">01</span>
+      <h3>Envío gratuito</h3>
+      <p>En compras superiores a $50.</p>
+    </div>
+    <div class="service">
+      <span class="service-num">02</span>
+      <h3>Devoluciones simples</h3>
+      <p>Hasta 30 días después de recibir tu pedido.</p>
+    </div>
+    <div class="service">
+      <span class="service-num">03</span>
+      <h3>Asesoría de rutina</h3>
+      <p>Te ayudamos a elegir según las necesidades de tu piel.</p>
+    </div>
+    <div class="service">
+      <span class="service-num">04</span>
+      <h3>Productos auténticos</h3>
+      <p>Selección original de distribuidores autorizados.</p>
+    </div>
+  </div>
+</section>
+
 <!-- NOSOTROS -->
 <section class="testimonios" id="nosotros" style="background:var(--crema)">
   <div class="container split">
     <div class="split-visual">
-      <!-- Rostro line-art estilo logo -->
-      <svg width="60%" viewBox="0 0 300 400" fill="none" stroke="#2F5645" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-        <!-- Contorno: frente, nariz, labios, mentón, cuello -->
-        <path d="M172 42
-                 C124 50 100 90 102 128
-                 C103 146 99 156 95 164
-                 C88 172 80 176 83 182
-                 C85 186 92 186 93 190
-                 C94 194 88 195 88 199
-                 C88 203 95 203 95 207
-                 C95 211 90 212 91 217
-                 C92 222 99 222 102 226
-                 C107 232 108 240 116 246
-                 C126 254 140 256 148 266
-                 C156 278 152 296 158 312"/>
-        <!-- Parte posterior de la cabeza y cabello -->
-        <path d="M172 42
-                 C216 48 240 86 236 128
-                 C233 160 216 182 194 196
-                 C206 206 228 212 238 232
-                 C224 240 204 234 192 242
-                 C196 262 190 284 182 300"/>
-        <!-- Ceja -->
-        <path d="M120 132 C130 124 144 123 154 129"/>
-        <!-- Ojo cerrado -->
-        <path d="M124 150 C132 144 144 144 151 150"/>
-      </svg>
+      <img class="story-photo" src="images/biodance-pads-clean-v2.jpg" alt="Biodance Collagen Gel Toner Pads" loading="lazy" decoding="async">
     </div>
     <div class="split-text">
       <span class="eyebrow">Sobre KORA</span>
       <h2>Auténtica belleza coreana, sin artificios</h2>
-      <p>Nacimos para acercarte la cosmética coreana original: fórmulas limpias, texturas ligeras y resultados visibles. Cada producto KORA se elabora en Corea con ingredientes de origen natural.</p>
+      <p>Nacimos para acercarte la cosmética coreana original: fórmulas limpias, texturas ligeras y resultados visibles. Cada producto de nuestra selección proviene de marcas y distribuidores verificados.</p>
       <ul class="split-feats">
         <li>Fórmulas veganas y libres de crueldad animal</li>
         <li>Sin parabenos, sulfatos ni fragancias sintéticas</li>
